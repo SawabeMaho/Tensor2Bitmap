@@ -1,0 +1,23 @@
+final float[] scores = outputTensor.getDataAsFloatArray();//注意这里的tensor是-1~1的，需要转化到0~255
+
+int lens = scores.length;
+int[] result = new int[lens];
+int[] img = new int[lens/3];
+for (int i = 0; i < scores.length; i++) {
+result[i]=(int)(scores[i]*128+128);
+}
+
+int alpha r,g,b
+
+int count1,count2,count3;
+for(int i=0;i<Math.sqrt(lens/3);i++){
+	alpha = 255<<(4*2*3);
+	r = result[count1++]<<(4*2*2);
+	g = result[count2++]<<(4*2*1);
+	b = result[count3++];
+	
+	img[i] = alpha+r+g+b;
+	
+}
+
+Bitmap bm = Bitmap.createBitmap(img,w,h,Bitmap.Config.ARGB_8888);
